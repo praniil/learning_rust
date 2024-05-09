@@ -1,0 +1,1 @@
+/home/pranil/rustProjects/learningRust/variables/target/debug/libvariables.rlib: /home/pranil/rustProjects/learningRust/variables/src/data_types.rs /home/pranil/rustProjects/learningRust/variables/src/lib.rs /home/pranil/rustProjects/learningRust/variables/src/variable.rs
