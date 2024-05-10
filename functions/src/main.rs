@@ -5,6 +5,7 @@ fn main() {
     let evaluate : i32 = evaluate(5);
     println!("evaluate: {}", evaluate);
     let result = ressult(true);
+    println!("result: {}", result);
 }
 
 fn factorial (number: i32) -> i32 {
