@@ -51,7 +51,34 @@ fn conversion() {
     
 }
 
+fn generate_nth_fibo() {
+    let mut number: String = String::new();
+    println!("enter the number the nth number:");
+    std::io::stdin().read_line(&mut number)
+        .expect("couldnt read the number");
+    let number : u32 = match number.trim().parse() {
+        Ok(num) => num,
+        Err(_) => {
+            eprintln!("couldnt parse the number");
+            return;
+        }
+    };
+    let fibo_number: u32 = fibo(number);
+    println!("the nth fibo number is: {}", fibo_number)
+}
+
+fn fibo(number :u32) -> u32 {
+    if number == 0 {
+        return 0;
+    } else if number == 1 || number == 2 {
+        return 1;
+    } else {
+        return fibo(number - 1) + fibo(number - 2);
+    }
+}
+
 
 pub fn chapter_three() {
     conversion();
+    generate_nth_fibo();
 }
