@@ -77,8 +77,12 @@ fn fibo(number :u32) -> u32 {
     }
 }
 
+// fn tweleve_days_christmas() {
+//     let array : [&str; 3] = ["one", "two", "three"];
+// }
 
 pub fn chapter_three() {
     conversion();
     generate_nth_fibo();
+    // tweleve_days_christmas();
 }
