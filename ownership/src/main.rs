@@ -30,7 +30,28 @@ fn main() {
     let original_string : String = String::from("original string");
     let (og_string, len) = get_orignalstring_and_length(original_string);
     println!("og_string: {}, length: {}", og_string, len);
+    
+    //mutable reference
+    let mut s : String = String :: from("hello Hero ");
+    change(&mut s);
+    println!("original string hello Hero: {}", s);
+
+    //multiple mutable references
+    let mut first: String = String::from("i am the original string");
+    let first_borrow = &first;  // Immutable borrow
+    let second_borrow = &first; // Another immutable borrow
+    //cannot use mutable reference after immutable reference
+    println!("{}, {}", first_borrow, second_borrow);
+    //now we can use it because the scope of first and second borrow is over
+    let third_borrow = &mut first; // Mutable borrow
+    println!("third borrow: {}", third_borrow);
 }
+
+fn change(str: &mut String) {
+    str.push_str("how are you?");
+    //by default the refrences are not mutable
+    println!("string after push: {}", str);
+} 
 
 fn takes_ownership(s:  String) -> String {
     return s;
