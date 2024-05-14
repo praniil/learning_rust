@@ -45,6 +45,26 @@ fn main() {
     //now we can use it because the scope of first and second borrow is over
     let third_borrow = &mut first; // Mutable borrow
     println!("third borrow: {}", third_borrow);
+
+    //dangling
+    let result_form_dangle = dangling();
+    println!("result form dangle: {}", result_form_dangle);
+
+}
+/*
+fn dangling() -> &String {
+    let s : String = String::from("in dangling");
+    &s
+    //we are returning the reference i.e the borrowed value of s
+    //the effect of s is dropped after the } bracket so it returns the reference is invalid or reference of nothing
+    
+}
+*/
+
+fn dangling() -> String {
+    let s : String = String::from("in dangling");
+    s
+    //this is correct  
 }
 
 fn change(str: &mut String) {
