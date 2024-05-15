@@ -22,6 +22,7 @@ pub fn defining_and_instanting () {
     let username : String = String::from("steve");
     let email : String = String::from("steve@gmail.com");
     let user2 : User = build_user(email, username);
+   
     println!("username: {}", user1.username);
     println!("user email: {}", user1.email);
     println!("user signin count: {}", user1.sign_in_count);
@@ -31,4 +32,32 @@ pub fn defining_and_instanting () {
     println!("user email: {}", user2.email);
     println!("user signin count: {}", user2.sign_in_count);
     println!("user active status: {}", user2.active);
+
+    //creating instances form other instances with struct update syntax
+    //created a new User instance, user3 and setting some fields to values of the sam fields from user1 and user2
+    let user3 : User = User{
+        username: String::from("Dustin"),
+        email: String::from("iamdustingnerd@gmail.com"),
+        active : user1.active,
+        sign_in_count : user1.sign_in_count,
+    };
+
+    //the same can be achieved by struct update syntax
+
+    let user4 : User = User {
+        username: String::from("Mike"),
+        email: String::from("miketheleader@gmail.com"),
+        ..user1 //struct update syntax
+    };
+
+    println!("username: {}", user3.username);
+    println!("user email: {}", user3.email);
+    println!("user signin count: {}", user3.sign_in_count);
+    println!("user active status: {}", user3.active);
+
+    println!("username: {}", user4.username);
+    println!("user email: {}", user4.email);
+    println!("user signin count: {}", user4.sign_in_count);
+    println!("user active status: {}", user4.active);
+
 }
