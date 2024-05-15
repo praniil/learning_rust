@@ -1,3 +1,5 @@
+use core::slice;
+
 fn main() {
     println!("Hello, world!");
     let mut s : String = String::from("hello");
@@ -50,6 +52,16 @@ fn main() {
     let result_form_dangle = dangling();
     println!("result form dangle: {}", result_form_dangle);
 
+    //slice doesnt have ownership
+    let slice_string : String = String::from("hello mate");
+    let hello = &slice_string[0..5];
+    //taking part of string as refernce
+    let mate = &slice_string[6..10];
+    //string slice
+    println!("Hello : {}", hello);
+    println!("mate: {}", mate);
+    let result_from_slice : usize = frist_word(&slice_string);
+    println!("result from slice: {}", result_from_slice);
 }
 /*
 fn dangling() -> &String {
@@ -85,4 +97,14 @@ fn makes_copy(number: i32) -> i32{
 fn get_orignalstring_and_length(s: String) -> (String, usize){
     let length : usize = s.len();
     return (s, length);
+}
+
+fn frist_word (s : &String) -> usize {
+    let bytes = s.as_bytes();
+    for (i, &item) in bytes.iter().enumerate() {
+        if item == b' ' {
+            return i;
+        }
+    }
+    s.len()
 }
