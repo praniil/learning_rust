@@ -5,6 +5,8 @@ use structure :: struct_methods;
 use structure :: multiple_methods_params;
 use structure :: struct_function;
 use structure::enums;
+use structure::enum_option;
+use structure::match_public_flow;
 fn main() {
     println!("Hello, world!");
     defining_and_instanting();
@@ -14,4 +16,6 @@ fn main() {
     multiple_methods_params();
     struct_function();
     enums();
+    enum_option();
+    match_public_flow();
 }
