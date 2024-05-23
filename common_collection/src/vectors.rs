@@ -39,8 +39,46 @@ pub fn vectors() {
 
     for i in &vec1{
         println!("{}", i);
+    }    
+
+    let mut vector_one = vec![1, 2, 3];
+    vector_one.push(69);
+
+    let forth :&i32 = &vector_one[3];
+    println!("the forth element is: {}", forth);
+
+    let third = vector_one.get(3); 
+    match third {
+        Some(&num) => println!("the forth element is: {}", num),
+        None => println!("we didint find the forth element")
     }
 
-    
+    /*
+    let first = &vector_one[0]; //immutable reference to the first element of vector
+    vector_one.push(33);    //we are trying to change or append a element at last Error
+    println!("first: {}", first);
+    */ 
 
+    //we know that vectors can hold elements of same kind
+    //what if we want to use elements of different types in vector?
+    //we can use enum: enum has specific variants may be of different types
+    //now we can make vector of enum type
+
+    enum SpreadSheet {
+        Int(i32),
+        Text(String),
+        Float(f64),
+    }
+    //vector that has same kind of data i.e SpreadSheet of enum type
+    let vector_spread_sheet : Vec<SpreadSheet> = vec![
+        SpreadSheet::Int(3),
+        SpreadSheet::Text(String::from("hello")),
+        SpreadSheet::Float(2.4),
+    ];
+
+    let first = &vector_spread_sheet[1];
+    match first {
+        SpreadSheet::Int(i) => println!("{}", i),
+        _ => println!("not a integer")
+    }
 }
