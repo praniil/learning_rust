@@ -17,7 +17,7 @@ pub fn strings () {
 
     //ownership of s1 is gone to the concatination function 
     println!("string new: {}", s3);
-    
+
     // println!("{}", s1); //invalid
     println!("{}", s3);
 
@@ -39,7 +39,7 @@ pub fn strings () {
     for ch in "hello my mate".chars() {
         println!("{}", ch);
     }
-    //using gemes method
+    //using graphemes method
     for g in string_new.graphemes(true) {
         println!("{}", g);
     }
