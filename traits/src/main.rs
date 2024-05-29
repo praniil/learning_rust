@@ -1,3 +1,6 @@
+use std::fmt::Debug;
+
+#[derive(Debug)]
 pub struct Tweet {
     pub username: String,
     pub content: String,
@@ -15,6 +18,7 @@ impl Summary for Tweet {
     }
 }
 
+#[derive(Debug)]
 pub struct NewsArticle {
     pub author: String,
     pub content: String,
@@ -44,6 +48,12 @@ pub trait Summary {
     }
 }
 
+pub struct Student {
+    name : String,
+    roll : String,
+    phone : u32,
+}
+
 //trait as argument
 pub fn trait_as_argument (item: &impl Summary) {
     println!("Breaking news: {}", item.summarize());
@@ -54,6 +64,21 @@ pub fn trait_as_argument (item: &impl Summary) {
 pub fn trait_as_argument_bound <T: Summary> (item: &T) {
     println!("Breaking new! {}", item.summarize());
 }
+
+pub fn some_function <T: Summary + Debug, U: Summary + Debug> (item1: &T, item2: &U) {
+    println!("item1: {:#?} item2: {:#?}", item1.summarize(), item2.summarize());
+}
+
+//returning types that implement traits
+pub fn return_type_that_implement_traits() -> impl Summary {
+    // Student{} cant return this becuase it doesnt implement traits
+    NewsArticle{
+        author: String::from("Ram"),
+        content: "The pollution is real in the city Delhi the heart of India".to_string(),
+        headline: "Delhi, India is the most polluted city!".to_string(),
+    }
+}
+
 fn main() {
     println!("Hello, world!");
     let article1 : NewsArticle = NewsArticle{
@@ -67,4 +92,7 @@ fn main() {
 
     trait_as_argument(&tweet1);
     trait_as_argument_bound(&article1);
+    some_function(&article1, &tweet1);
+    let some_article = return_type_that_implement_traits();
+    println!("{}", some_article.summarize());
 }
