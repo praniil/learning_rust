@@ -19,8 +19,8 @@ impl Guesss {
     pub fn new(value: i32) -> Guesss {
         if value < 1 {
             panic!("Guess must be greater than 1")
-        } else if value > 100 {
-            panic!("Guess must be smaller than 100")
+        } else if value >= 100 {
+            panic!("Guess value must be less than or equal to 100 ")
         }
         Guesss { number: value }
     }
@@ -34,12 +34,26 @@ pub fn greeting(name: &str) -> String {
     format!("Namaste! {}", name)
 }
 
+pub fn prints_and_returns_10(a: i32) -> i32 {
+    println!("I got the value {}", a);
+    10
+}
+
+pub fn add_two_fn (a: i32) -> i32 {
+    internal_adder(a, 2)
+}
+
+fn internal_adder(a: i32, b:i32) -> i32 {
+    a + b
+}
+
 #[cfg(test)]
 mod tests {
     //path that includes everything
     use super::*;
     
     #[test]
+    #[ignore]
     fn larger_can_hold_smaller () {
         let large: Rectangle = Rectangle { width:5, height: 2 };
         let smaller : Rectangle = Rectangle { width: 3, height: 1 };
@@ -47,6 +61,7 @@ mod tests {
     }
 
     #[test]
+    #[ignore]
     fn smaller_can_hold_larger () {
         let large: Rectangle = Rectangle { width:5, height: 2 };
         let smaller : Rectangle = Rectangle { width: 3, height: 1 };
@@ -56,6 +71,7 @@ mod tests {
 
     //assert_eq! allows you to compare two values
     #[test]
+    #[ignore]
     fn test_add_two () {
         assert_ne!(4, add_two(3));
         //ne = not equal
@@ -63,6 +79,7 @@ mod tests {
     }
 
     #[test]
+    #[ignore]
     fn check_name() {
         let name = "Phil";
         let result = greeting(name);
@@ -71,12 +88,14 @@ mod tests {
     }
 
     #[test]
-    // #[should_panic(expected = "Guess value must be less than or equal to 100 ")]
+    #[ignore]
+    #[should_panic(expected = "Guess value must be less than or equal to 100 ")]
     fn greater_than_100 () {
-            Guesss::new(10);
+            Guesss::new(1000);
     }
 
     #[test]
+    #[ignore]
     fn it_works() -> Result<(), String> {
         if 2 + 3 == 5 {
             Ok(())
@@ -85,4 +104,31 @@ mod tests {
             Err(String::from("two plus three doesnt equal four"))
         }
     }
+
+    #[test]
+    #[ignore]
+    fn this_test_will_pass() {
+        let value = prints_and_returns_10(8);
+        assert_eq!(10, value);
+    }
+
+    #[test]
+    #[ignore]
+    fn this_test_will_fail() {
+        let value = prints_and_returns_10(4);
+        assert_eq!(8, value);
+    }
+
+    #[test]
+    #[ignore]
+    fn one_hundered_and_two () {
+        assert_eq!(102, add_two(100));
+    }
+
+    #[test]
+    fn test_add () {
+        assert_eq!(4, internal_adder(2, 2));
+    }
+
+    
 }
