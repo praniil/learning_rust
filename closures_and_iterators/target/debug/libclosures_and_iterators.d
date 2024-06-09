@@ -1,0 +1,1 @@
+/home/pranil/rustProjects/learningRust/closures_and_iterators/target/debug/libclosures_and_iterators.rlib: /home/pranil/rustProjects/learningRust/closures_and_iterators/src/closures.rs /home/pranil/rustProjects/learningRust/closures_and_iterators/src/lib.rs
