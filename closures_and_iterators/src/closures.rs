@@ -37,7 +37,6 @@ impl Inventory {
 }
 
 pub fn closures () {
-    
     let expensive_closure = |num| {
         println!("Calculating slowly..");
         thread::sleep(Duration::from_secs(2));
@@ -82,4 +81,16 @@ pub fn closures () {
     //println!("Before: {:?}", list2); //no other borrows are allowed when there is already mutable borrow
     borrows_mutably();
     println!("After calling closure: {:?}", list2);
+
+    let list3 = vec![1, 2, 3];
+    println!("Becore defining closure: {:?}", list3);
+
+    //giving the ownership to the closure even though not required
+    //we moved because the main thread might finish faster than new thread
+    //main thread fininshed: if has the ownership of list3 it drops it and the new thread will be invalid
+    //so here for using thread we are sending the ownership of the list3
+    thread::spawn(move || println!("From thread: {:?}", list3))
+        .join()
+        .unwrap(); 
+
 }
