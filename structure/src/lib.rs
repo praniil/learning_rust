@@ -7,6 +7,8 @@ mod struct_function;
 mod enums;
 mod enum_option;
 mod match_control_flow;
+mod enum_method;
+mod library;
 
 pub use def_and_instantiating::defining_and_instanting;
 pub use tuple::tuple;
@@ -17,4 +19,5 @@ pub use struct_function::struct_function;
 pub use enums::enums;
 pub use enum_option::enum_option;
 pub use match_control_flow::match_public_flow;
-
+pub use enum_method::enum_method;
+pub use library::library;

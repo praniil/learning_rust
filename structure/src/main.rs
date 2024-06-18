@@ -1,4 +1,5 @@
 use structure :: defining_and_instanting;
+use structure::library;
 use structure :: tuple;
 use structure :: area_rectange;
 use structure :: struct_methods;
@@ -7,6 +8,7 @@ use structure :: struct_function;
 use structure::enums;
 use structure::enum_option;
 use structure::match_public_flow;
+use structure::enum_method;
 fn main() {
     println!("Hello, world!");
     defining_and_instanting();
@@ -18,4 +20,6 @@ fn main() {
     enums();
     enum_option();
     match_public_flow();
+    enum_method();
+    library();
 }
